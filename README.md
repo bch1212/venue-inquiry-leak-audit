@@ -20,17 +20,20 @@ A same-day, fixed-price audit for independent event venues that are leaking high
 - `samples/sample-input.csv` — sample venues/URLs.
 - `reports/sample-report.md` — generated sample audit.
 - `sales/offer.md` — landing page + email copy.
-- `data/prospects.csv` — ranked public prospect list.
+- `data/prospects.csv` — ranked public venue list (email column empty).
+- `data/prospects_enriched.sample.csv` — fake example.com rows. Outreach uses this unless `PROSPECTS_CSV` is set.
+- Enriched contact output (`PROSPECTS_OUT`, default `data/prospects_enriched.csv`) is gitignored.
 - `logs/outreach.jsonl` — append-only outreach log.
 - `public/index.html` — static landing page for GitHub Pages.
 
 ## Verify locally
 
 ```bash
-cd /Users/bretthalverson/Projects/revenue-lab/ventures/venue-inquiry-leak-audit
 python3 bin/audit_venue.py https://www.peachedsocialhouse.com -o reports/sample-report.md
-python3 -m py_compile bin/audit_venue.py
+python3 -m py_compile bin/audit_venue.py bin/enrich_prospects.py bin/send_outreach.py bin/check_replies.py
 python3 -m http.server 8123 --directory public
 ```
+
+Run these from the repo root. `DRY_RUN=1 python3 bin/send_outreach.py` reads the fake sample. To enrich a local list, set `PROSPECTS_IN` and `PROSPECTS_OUT`. Enrichment refuses to write over the sample file.
 
 The audit never submits forms; it only fetches public pages and reports evidence.

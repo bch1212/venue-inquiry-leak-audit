@@ -4,8 +4,9 @@ from email.utils import formatdate, make_msgid
 
 MAX_SEND=int(os.environ.get('MAX_SEND','10'))
 DRY=os.environ.get('DRY_RUN','0')=='1'
-FROM=os.environ.get('OUTREACH_FROM','Brett Halverson <brett@vikinetic.com>')
-CSV='data/prospects_enriched.csv'
+FROM=os.environ.get('OUTREACH_FROM','Example Sender <audits@example.com>')
+SIGN_OFF=os.environ.get('OUTREACH_SIGN_OFF','Alex Example')
+CSV=os.environ.get('PROSPECTS_CSV','data/prospects_enriched.sample.csv')
 LOG='logs/outreach.jsonl'
 SENT=set()
 if os.path.exists(LOG):
@@ -31,7 +32,7 @@ Offer: I’ll deliver a concise prioritized report within 24 hours for $149. If 
 If useful, reply “audit” with the best URL to review. If not relevant, reply “no” and I won’t follow up.
 
 Best,
-Brett
+{SIGN_OFF}
 """
 
 def send(to, sub, msg):

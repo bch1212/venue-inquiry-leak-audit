@@ -10,7 +10,7 @@ A same-day $149 Venue Inquiry Leak Audit shows independent venues exactly where 
 
 ## CTA
 
-Email Brett at `brett@vikinetic.com` with subject `Venue audit` and your venue URL. I’ll reply with next steps. First 5 audits this week are $149.
+Email `audits@example.com` with subject `Venue audit` and your venue URL. I’ll reply with next steps. First 5 audits this week are $149.
 
 ## Cold email template
 
@@ -29,7 +29,7 @@ Offer: I’ll deliver a concise prioritized report within 24 hours for $149. If 
 If useful, reply “audit” with the best URL to review. If not relevant, reply “no” and I won’t follow up.
 
 Best,
-Brett
+Alex Example
 
 ## Follow-up
 

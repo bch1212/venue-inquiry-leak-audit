@@ -2,3 +2,29 @@ __pycache__/
 *.pyc
 logs/
 *.zip
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+.envrc
+
+# Local databases
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+*.sqlite-journal
+
+# Prospect data files. The only committed exception is the fake sample.
+*prospect*.csv
+!data/prospects_enriched.sample.csv
+
+# Other local artifacts
+.DS_Store
+*.log
+*.pem
+*.key
+*.p12

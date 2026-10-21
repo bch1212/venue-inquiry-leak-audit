@@ -1,0 +1,3 @@
+name,city,state,url,why_ranked,contact_url,email,personalization_angle,status,verified_emails,crawled_urls
+Example Ballroom,Example City,EX,https://events.example.com,FAKE SAMPLE for dry runs only,https://events.example.com/contact,events@example.com,FAKE SAMPLE personalization angle,draft,events@example.com,https://events.example.com;https://events.example.com/contact
+Sample Gallery,Sample Town,EX,https://gallery.example.com,FAKE SAMPLE for dry runs only,https://gallery.example.com/private-events,bookings@example.com,FAKE SAMPLE personalization angle,draft,bookings@example.com,https://gallery.example.com

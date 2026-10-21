@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import csv, json, re, ssl, time
+import csv, json, os, re, ssl, time
 from html.parser import HTMLParser
 from urllib.parse import urljoin, urlparse
 from urllib.request import Request, urlopen
@@ -42,7 +42,12 @@ def crawl(row):
         time.sleep(.2)
     return sorted(emails), list(dict.fromkeys(urls))[:6]
 
-inp='data/prospects.csv'; out='data/prospects_enriched.csv'; log='logs/prospect_research.jsonl'
+inp=os.environ.get('PROSPECTS_IN','data/prospects.csv')
+out=os.environ.get('PROSPECTS_OUT','data/prospects_enriched.csv')
+log=os.environ.get('PROSPECT_RESEARCH_LOG','logs/prospect_research.jsonl')
+sample='data/prospects_enriched.sample.csv'
+if os.path.abspath(out)==os.path.abspath(sample):
+    raise SystemExit('Refusing to overwrite the fake sample with enriched contacts')
 with open(inp,newline='') as f: rows=list(csv.DictReader(f))
 fields=list(rows[0].keys())+['verified_emails','crawled_urls']
 with open(out,'w',newline='') as fo, open(log,'a') as lo:
@@ -50,4 +55,4 @@ with open(out,'w',newline='') as fo, open(log,'a') as lo:
     for r in rows:
         emails,urls=crawl(r); r['verified_emails']=';'.join(emails); r['crawled_urls']=';'.join(urls); w.writerow(r)
         lo.write(json.dumps({'ts':time.time(),'name':r['name'],'url':r['url'],'emails':emails,'crawled_urls':urls})+'\n')
-        print(r['name'], emails[:3])
+        print(r['name'], len(emails))

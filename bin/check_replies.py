@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import json, os, subprocess, time
-VENTURE='/Users/bretthalverson/Projects/revenue-lab/ventures/venue-inquiry-leak-audit'
+VENTURE=os.environ.get('VENTURE_DIR') or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOG=os.path.join(VENTURE,'logs/outreach.jsonl')
 STATE=os.path.expanduser('~/.hermes/state/venue-inquiry-leak-audit-watch.json')
 keywords=['Venue audit','private-events page audit','inquiry leak','reply “audit”','reply "audit"']
